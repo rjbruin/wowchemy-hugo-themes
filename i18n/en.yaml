@@ -86,6 +86,9 @@
 - id: interests
   translation: Interests
 
+- id: prior_experience
+  translation: Prior Experience
+
 - id: education
   translation: Education
 
