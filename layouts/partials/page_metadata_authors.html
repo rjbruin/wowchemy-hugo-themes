@@ -10,6 +10,10 @@
     <span {{ if site.Params.highlight_superuser | and (eq $profile_page.Params.superuser true) }}class="font-weight-bold"{{end}}>
       {{- if and $profile_page $link_authors -}}
         <a href="{{$profile_page.RelPermalink}}">{{$name}}</a>
+      {{- else if and (isset $.Params "author_links") (index $.Params.author_links $index) -}}
+        {{- with (index $.Params.author_links $index) -}}
+          <a href="{{ . }}" target="_blank">{{$name}}</a>
+        {{- end -}}
       {{- else -}}
         {{$name}}
       {{- end -}}

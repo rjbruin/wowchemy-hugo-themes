@@ -7,3 +7,28 @@
 #update_list .update-date h3 {
     margin-top: 0em;
 }
+
+// Publication - featured widget
+#featured img.article-banner {
+    width: auto;
+    max-height: 12em;
+    margin: 0 auto;
+}
+
+// Publication - long format
+.paper-citation {
+    font-size: 0.75em;
+}
+h3.popover-header {
+    margin-top: 0em;
+}
+.popover-body {
+    font-size: 0.7em;
+    font-family: monospace;
+}
+.popover {
+    width: 40em;
+}
+.paper-content h1, .paper-content h2, .paper-content h3 {
+    text-align: center;
+}

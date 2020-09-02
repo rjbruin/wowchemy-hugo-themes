@@ -146,6 +146,9 @@
     <script id="dsq-count-scr" src="https://{{site.Params.comments.disqus.shortname}}.disqus.com/count.js" async></script>
     {{ end }}
 
+    {{/* Pre-Bootstrap custom JS */}}
+    {{ partial "pre_bootstrap_custom_js" . }}
+
     {{ $js_comment := printf "/* Source Themes Academic v%s | https://sourcethemes.com/academic/ */\n" site.Data.academic.version }}
     {{ $js_bundle_head := $js_comment | resources.FromString "js/bundle-head.js" }}
     {{ $js_linebreak := "\n" | resources.FromString "js/linebreak.js" }}{{/* Fix no line break after Bootstrap JS causing error. */}}

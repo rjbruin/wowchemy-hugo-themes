@@ -29,6 +29,7 @@
   {{ i18n "btn_pdf" }}
 </a>
 {{ end }}
+
 {{ $resource := $page.Resources.GetMatch "cite.bib" }}
 {{ with $resource }}
 <button type="button" class="btn btn-outline-primary my-1 mr-1{{ if $is_list }} btn-sm{{end}} js-cite-modal"
@@ -36,6 +37,14 @@
   {{ i18n "btn_cite" }}
 </button>
 {{ end }}
+
+{{/* CUSTOM: Cite from Bibtex as parameter, not from file */}}
+{{ if $page.Params.bibtex }}
+<button class="btn btn-outline-primary my-1 mr-1{{ if $is_list }} btn-sm{{end}}" data-toggle="popover"
+        title="Bibtex citation" data-content="{{ $page.Params.bibtex }}"
+        data-placement="bottom">{{ i18n "btn_cite" }}</button>
+{{ end }}
+
 {{ with $page.Params.url_code }}
   {{ $resource := $page.Resources.GetMatch . }}
   {{ if $resource }}

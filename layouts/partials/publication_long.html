@@ -1,0 +1,96 @@
+{{ partial "page_header.html" . }}
+
+<div class="container">
+    {{ $featured := (.Resources.ByType "image").GetMatch "*featured*" }}
+    {{ if and $featured (not .Params.image.preview_only) }}
+
+        {{/* Fit image within max size. */}}
+        {{ $image := $featured }}
+
+        {{/* Determine image placement. */}}
+        {{ $placement := .Params.image.placement | default 1 }}{{/* Default to full column width. */}}
+        {{ $image_container := "" }}
+        {{ if eq $placement 2}}
+            {{ $image_container = "container" }}
+            {{ if gt $featured.Width 1200 }}
+            {{ $image = $featured.Resize "1200x" }}
+            {{ end }}
+        {{else if eq $placement 3}}
+            {{ $image_container = "container-fluid" }}
+            {{ $image := $featured.Fit "2560x2560" }}
+        {{else}}
+            {{ $image_container = "article-container" }}
+            {{ if gt $featured.Width 720 }}
+            {{ $image = $featured.Resize "720x" }}
+            {{ end }}
+        {{end}}
+
+        {{/* Featured image */}}
+        <div class="row pt-5 mb-4">
+            <div class="article-header {{$image_container}} featured-image-wrapper" style="max-width: {{$image.Width}}px; max-height: {{$image.Height}}px;">
+                <div style="position: relative">
+                <img src="{{ $image.RelPermalink }}" alt="{{ with $.Params.image.alt_text }}{{.}}{{ end }}" class="featured-image">
+                {{ with $.Params.image.caption }}<span class="article-header-caption">{{ . | markdownify | emojify }}</span>{{ end }}
+                </div>
+            </div>
+        </div>
+    {{ end }}
+  <div class="row justify-content-md-center">
+    <div class="col-12 col-lg-10 text-center">
+        <h1>{{ .Params.title }}</h1>
+        {{ partial "page_metadata_authors" . }}
+    </div>
+  </div>
+  <div class="row justify-content-md-center mt-4">
+    <div class="col-12 text-center btn-group-lg">
+        {{ if and (isset $.Params "url_pdf") $.Params.url_pdf }}
+          <a class="btn btn-outline-primary mr-1" href="{{ $.Params.url_pdf }}">PDF</a>
+        {{ end }}
+        {{ if and (isset $.Params "doi") $.Params.doi }}
+          <a class="btn btn-outline-primary mr-1" href="https://doi.org/{{ $.Params.doi }}">DOI</a>
+        {{ end }}
+        {{ if and (isset $.Params "url_code") $.Params.url_code }}
+          <a class="btn btn-outline-primary mr-1" href="{{ $.Params.url_code }}">Code</a>
+        {{ end }}
+        {{ if and (isset $.Params "url_talk") $.Params.url_talk }}
+          <a class="btn btn-outline-primary mr-1" href="{{ $.Params.url_talk }}">Talk</a>
+        {{ end }}
+        {{ if and (isset $.Params "bibtex") $.Params.bibtex }}
+          <button class="btn btn-outline-primary mr-1" data-toggle="popover" title="Bibtex citation" data-content="{{ .Params.bibtex }}" data-placement="bottom">Cite</button>
+        {{ end }}
+    </div>
+  </div>
+
+  {{ if (.Content | plainify) }}
+  <div class="row justify-content-md-center mt-5">
+    <div class="col-12 col-lg-10 text-justify paper-content">
+      {{ .Content | markdownify | emojify }}
+    </div>
+  </div>
+  {{ end }}
+  <div class="row mt-5">
+    <div class="col-12 col-lg-4 text-justify paper-citation">
+        <h3>Citation
+            {{ if and (isset $.Params "bibtex") $.Params.bibtex }}
+            <button class="btn btn-outline-primary btn-sm ml-1" data-toggle="popover" title="Bibtex citation" data-content="{{ .Params.bibtex }}" data-placement="bottom">Bibtex</button>
+            {{ end }}
+        </h3>
+        {{ partial "page_metadata_authors" . }} ({{ .Params.date.Format "2006"}}).
+        <span style="font-weight: bold">{{ .Params.title }}</span>.
+        <span style="font-style: italic">{{ .Params.publication }}</span>.
+        <a href="https://doi.org/{{ .Params.doi }}">https://doi.org/{{ .Params.doi }}</a>
+    </div>
+    {{ if .Params.abstract }}
+    <div class="col-12 col-lg-8 text-justify">
+        <h3>{{ i18n "abstract" }}</h3>
+        <p class="pub-abstract" style="font-size: 0.9em">{{ .Params.abstract | markdownify }}</p>
+    </div>
+    {{ end }}
+  </div>
+</div>
+
+<div class="space-below"></div>
+
+{{ partial "page_footer" . }}
+
+</div>

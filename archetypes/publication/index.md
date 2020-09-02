@@ -2,9 +2,28 @@
 # Documentation: https://sourcethemes.com/academic/docs/managing-content/
 
 title: "{{ replace .Name "-" " " | title }}"
-authors: []
+authors: ["Robert-Jan Bruintjes"]
+author_notes: []
+author_links: ["https://rjbruin.github.io/"]
 date: {{ .Date }}
 doi: ""
+abstract: ""
+bibtex: ""
+
+# Format settings
+featured: false
+long_format: true
+
+# Summary - shown only in overview of featured publications.
+summary: ""
+
+# Featured image
+# To use, add an image named `featured.jpg/png` to your page's folder.
+# Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
+image:
+  caption: ""
+  focal_point: ""
+  preview_only: false
 
 # Schedule page publish date (NOT publication's date).
 publishDate: {{ .Date }}
@@ -19,14 +38,15 @@ publication_types: ["0"]
 publication: ""
 publication_short: ""
 
-abstract: ""
-
-# Summary. An optional shortened abstract.
-summary: ""
-
-tags: []
-categories: []
-featured: false
+# Add links to content
+# url_pdf:
+# url_code:
+# url_dataset:
+# url_poster:
+# url_project:
+# url_slides:
+# url_source:
+# url_video:
 
 # Custom links (optional).
 #   Uncomment and edit lines below to show custom links.
@@ -36,34 +56,27 @@ featured: false
 #   icon_pack: fab
 #   icon: twitter
 
-url_pdf:
-url_code:
-url_dataset:
-url_poster:
-url_project:
-url_slides:
-url_source:
-url_video:
-
-# Featured image
-# To use, add an image named `featured.jpg/png` to your page's folder. 
-# Focal points: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight.
-image:
-  caption: ""
-  focal_point: ""
-  preview_only: false
+# tags: []
+# categories: []
 
 # Associated Projects (optional).
 #   Associate this publication with one or more of your projects.
 #   Simply enter your project's folder or file name without extension.
 #   E.g. `internal-project` references `content/project/internal-project/index.md`.
 #   Otherwise, set `projects: []`.
-projects: []
+# projects: []
 
 # Slides (optional).
 #   Associate this publication with Markdown slides.
 #   Simply enter your slide deck's filename without extension.
 #   E.g. `slides: "example"` references `content/slides/example/index.md`.
 #   Otherwise, set `slides: ""`.
-slides: ""
+# slides: ""
+
+# Turn off profile box at the bottom of the page
+profile: false
 ---
+
+<!-- Write using any format: https://gohugo.io/content-management/formats/ -->
+
+<!-- ![](/images/figure1.png) -->
