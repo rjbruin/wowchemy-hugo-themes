@@ -43,17 +43,29 @@
   </div>
   <div class="row justify-content-md-center mt-4">
     <div class="col-12 text-center btn-group-lg">
+        {{ if and (isset $.Params "url_website") $.Params.url_website }}
+          <a class="btn btn-outline-primary mr-1" href="{{ $.Params.url_website }}">Website</a>
+        {{ end }}
         {{ if and (isset $.Params "url_pdf") $.Params.url_pdf }}
           <a class="btn btn-outline-primary mr-1" href="{{ $.Params.url_pdf }}">PDF</a>
         {{ end }}
+        {{ if and (isset $.Params "url_arxiv") $.Params.url_arxiv }}
+          <a class="btn btn-outline-primary mr-1" href="{{ $.Params.url_arxiv }}">ArXiv</a>
+        {{ end }}
         {{ if and (isset $.Params "doi") $.Params.doi }}
-          <a class="btn btn-outline-primary mr-1" href="https://doi.org/{{ $.Params.doi }}">DOI</a>
+          <a class="btn btn-outline-primary mr-1" href="https://doi.org/{{ $.Params.doi }}" target="_blank">DOI</a>
         {{ end }}
         {{ if and (isset $.Params "url_code") $.Params.url_code }}
-          <a class="btn btn-outline-primary mr-1" href="{{ $.Params.url_code }}">Code</a>
+          <a class="btn btn-outline-primary mr-1" href="{{ $.Params.url_code }}" target="_blank">Code</a>
         {{ end }}
         {{ if and (isset $.Params "url_talk") $.Params.url_talk }}
-          <a class="btn btn-outline-primary mr-1" href="{{ $.Params.url_talk }}">Talk</a>
+          <a class="btn btn-outline-primary mr-1" href="{{ $.Params.url_talk }}" target="_blank">Talk</a>
+        {{ end }}
+        {{ if and (isset $.Params "url_slides") $.Params.url_slides }}
+          <a class="btn btn-outline-primary mr-1" href="{{ $.Params.url_slides }}" target="_blank">Slides</a>
+        {{ end }}
+        {{ if and (isset $.Params "url_poster") $.Params.url_poster }}
+          <a class="btn btn-outline-primary mr-1" href="{{ $.Params.url_poster }}" target="_blank">Poster</a>
         {{ end }}
         {{ if and (isset $.Params "bibtex") $.Params.bibtex }}
           <button class="btn btn-outline-primary mr-1" data-toggle="popover" title="Bibtex citation" data-content="{{ .Params.bibtex }}" data-placement="bottom">Cite</button>

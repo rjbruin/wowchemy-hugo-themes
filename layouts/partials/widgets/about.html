@@ -103,11 +103,14 @@
     <div class="row">
 
       {{ with $person.interests }}
-      <div class="col-md-5">
+      <div class="col-md-12">
         <h3>{{ i18n "interests" | markdownify }}</h3>
-        <ul class="ul-interests">
+        <ul class="ul-interests fa-ul">
           {{ range . }}
-          <li>{{ . | markdownify | emojify }}</li>
+          <li>
+            <i class="fa-li fas fa-lightbulb"></i>
+            {{ . | markdownify | emojify }}
+          </li>
           {{ end }}
         </ul>
       </div>
