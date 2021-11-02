@@ -67,9 +67,9 @@
         {{ if and (isset $.Params "url_poster") $.Params.url_poster }}
           <a class="btn btn-outline-primary mr-1" href="{{ $.Params.url_poster }}" target="_blank">Poster</a>
         {{ end }}
-        {{ if and (isset $.Params "bibtex") $.Params.bibtex }}
+        <!-- {{ if and (isset $.Params "bibtex") $.Params.bibtex }}
           <button class="btn btn-outline-primary mr-1" data-toggle="popover" title="Bibtex citation" data-content="{{ .Params.bibtex }}" data-placement="bottom">Cite</button>
-        {{ end }}
+        {{ end }} -->
     </div>
   </div>
 
@@ -83,14 +83,17 @@
   <div class="row mt-5">
     <div class="col-12 col-lg-4 text-justify paper-citation">
         <h3>Citation
-            {{ if and (isset $.Params "bibtex") $.Params.bibtex }}
+            <!-- {{ if and (isset $.Params "bibtex") $.Params.bibtex }}
             <button class="btn btn-outline-primary btn-sm ml-1" data-toggle="popover" title="Bibtex citation" data-content="{{ .Params.bibtex }}" data-placement="bottom">Bibtex</button>
-            {{ end }}
+            {{ end }} -->
         </h3>
-        {{ partial "page_metadata_authors" . }} ({{ .Params.date.Format "2006"}}).
+
+        <code class='hljs bash' style='text-align: left !important'>{{ .Params.bibtex }}</code>
+
+        <!-- {{ partial "page_metadata_authors" . }} ({{ .Params.date.Format "2006"}}).
         <span style="font-weight: bold">{{ .Params.title }}</span>.
         <span style="font-style: italic">{{ .Params.publication }}</span>.
-        <a href="https://doi.org/{{ .Params.doi }}">https://doi.org/{{ .Params.doi }}</a>
+        <a href="https://doi.org/{{ .Params.doi }}">https://doi.org/{{ .Params.doi }}</a> -->
     </div>
     {{ if .Params.abstract }}
     <div class="col-12 col-lg-8 text-justify">
